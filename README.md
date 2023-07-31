@@ -1,12 +1,12 @@
-# <img src="https://img.icons8.com/bubbles/40/null/react.png" alt="react" widht="40" height="40" /> Proyecto individual de Codo a Codo - React - 
+# <img src="https://img.icons8.com/bubbles/40/null/react.png" alt="react" widht="40" height="40" /> Proyecto individual de Codo a Codo - React - CODOTV 
 
 ---  
-CodoTV  
+ 
 
 Aplicacion de series utilizando la API de TMDB. Funcionalidades: 
 -Muestra las series mas populares en un grid  
 -Busca series por nombre, brindando info basica de las mismas   
--Permite memeizar cualquiera de los poster con dos tipos de fuentes diferentes y bajar la imagen resultante en formato jpg.  
+-Permite memeizar el poster promocional de cualquier serie con dos tipos de fuentes diferentes y bajar la imagen resultante en formato jpg.  
 -En caso de error, lo muestra en una ventana emergente  
 ---  
 
