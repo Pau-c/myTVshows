@@ -7,6 +7,7 @@ Aplicacion de series utilizando la API de TMDB. Funcionalidades:
 -Muestra las series mas populares en un grid
 -Busca series por nombre, brindando info basica de las mismas 
 -Permite memeizar cualquiera de los poster con dos tipos de fuentes diferentes y bajar la imagen resultante en formato jpg.
+-En caso de error, lo muestra en una ventana emergente
 ---
 
 ## 🛠️Tecnologías:
