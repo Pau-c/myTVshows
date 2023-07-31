@@ -1,0 +1,109 @@
+a {
+  text-decoration: none;
+  color: rgb(34, 34, 34);
+  font-weight: bold;
+}
+a:hover {
+  color: black;
+}
+#posterizarButtonSmall {
+background-color: #ef7796 !important;
+font-weight: bold;
+
+border: none !important;
+}
+#posterizarButton{ 
+	background-color:#474262;
+	border: none !important;
+ }
+
+
+
+	.accordion-button{
+		
+		box-shadow: none; -webkit-box-shadow: none !important;
+		border: none !important;}
+		.accordion-button:not(.collapsed){
+			color: #000;}
+
+		#button-input-search{
+			background-color: #ef7796;
+			border: none !important;
+		}
+
+		.carousel-show-title{
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+/* meme component */
+.meme {
+	position: relative;
+	margin-top: 3em;
+	align-self: center;
+  overflow: hidden;
+text-overflow:ellipsis;
+}
+
+.meme-text {
+	position: relative;
+	width: 40%;	/* of the text line before it breaks */
+	text-align: left;
+	left:30%;	/* start of the meme text */
+	top:98em; /* text height  */
+	margin:  2px 2px 2px 2px;
+	padding: 2px 2px;
+	font-family: impact, sans-serif;
+	font-size: 2em;
+	text-transform: uppercase;
+	color: white;
+	letter-spacing: 1px;
+	text-shadow:
+		2px 2px 0 #000,
+		-2px -2px 0 #000,
+		2px -2px 0 #000,
+		-2px 2px 0 #000,
+		0 2px 0 #000,
+		2px 0 0 #000,
+		0 -2px 0 #000,
+		-2px 0 0 #000,
+		2px 2px 5px #000;
+}
+
+.meme-text-retro{
+
+	position: relative;
+	width: 40%;	/* of the text line before it breaks */
+	text-align: left;
+	left:30%;	/* start of the meme text */
+	top:98em; /* text height  */
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px;
+	font-family:  "Lucida Handwriting";
+	font-size: 2em;
+	text-transform: lowercase;
+	color: white;
+	letter-spacing: 1px;
+	text-shadow:
+		2px 2px 0 #000,
+		-2px -2px 0 #000,
+		2px -2px 0 #000,
+		-2px 2px 0 #000,
+		0 2px 0 #000,
+		2px 0 0 #000,
+		0 -2px 0 #000,
+		-2px 0 0 #000,
+		2px 2px 5px #000;
+}
+
+.bottom {
+	bottom: 0;
+}
+
+.top {
+	top: 0;
+}
+.NavBar{
+	background: rgb(72,49,83);
+background: linear-gradient(90deg, rgba(72,49,83,1) 0%, rgba(71,66,98,1) 41%, rgba(71,66,98,1) 54%, rgba(70,85,116,1) 69%, rgba(62,110,128,1) 83%, rgba(59,141,147,1) 92%, rgba(89,197,184,1) 100%);}
