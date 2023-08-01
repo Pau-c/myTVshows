@@ -24,7 +24,7 @@ const ShowSeries = () => {
         setShowData(data.results);
        // console.log("showData:", showData);
       } catch (error) {
-        console.error(error);
+       // console.error(error);
       }
     };
 

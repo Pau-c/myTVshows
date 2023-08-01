@@ -6,7 +6,7 @@ export const fetchShowData = async (url, setShowData) => {
        { mode: 'cors' }
        );
     const data = response.data;
-       console.log("Fetched data:", data); 
+     //  console.log("Fetched data:", data); 
 
     if (setShowData) {
       setShowData(data);
