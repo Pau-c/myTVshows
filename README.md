@@ -64,5 +64,5 @@ REACT_APP_MOVIE_API_KEY=
     </tr>
 </table>
 
-## :tv: [**Demo**](https://codotv.netlify.app/)
+## :tv: [**Demo**](https://my-tvshows.netlify.app/)
 
