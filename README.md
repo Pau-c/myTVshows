@@ -1,68 +1,70 @@
-# myTVshows 
-Keep track of what you're watching 
+# Getting Started with Create React App
 
----  
- <img src="https://raw.githubusercontent.com/Pau-c/myTVshows/5ef50e4b52782cb2f430ca30220c1109809c0f23/public/Television-comic.svg" alt="react" widht="70" height="70" />
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-TV Series app utilizing the TMDB API. Features include:
+## Available Scripts
 
-- Displaying the most popular series in a grid format.
-- Searching for shows by name, returning basic information.
-- Allowing users to create usernames and maintain a list of favorite shows.
---- 
-# Getting started
-Installation:
-1. Make an account at [TMDB](https://www.themoviedb.org/) and get API Key 
-2. Clone the repo
-```
-git clone https://github.com/Pau-c/myTVshows.git
-```
-3. Install NPM packages
-```js
-npm install
-```
-4. `install Firebase`
-> [!IMPORTANT]
-> Get a `Firestore/Firebase` account and make an `.env` file in root with the  `SDKs` from Firebase and the `API key` TMDB provided 
-Add the prefix  `REACT_APP_` to every variable.
- It should look like this:
-```
-//firebase env variables. paste values without ""
-REACT_APP_FIREBASE_apiKey= 
-REACT_APP_FIREBASE_authDomain= 
-REACT_APP_FIREBASE_projectId= 
-REACT_APP_FIREBASE_storageBucket= 
-REACT_APP_FIREBASE_messagingSenderId= 
-REACT_APP_FIREBASE_appId= 
-//key for tmdb api
-REACT_APP_MOVIE_API_KEY= 
-```
+In the project directory, you can run:
 
----  
+### `npm start`
 
-## 🛠️Built with:
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-<table>
-    <tr>
-        <td> <img src="https://img.icons8.com/color/30/null/html-5--v1.png" alt="icono de HTML5" width="30" height="30" /> HTML5</td>
-        <td> <img src="https://img.icons8.com/color/30/null/bootstrap.png" alt="icono de Bootstrap" width="30" height="30" /> Bootstrap</td>
-        <td><a href="https://axios-http.com/">Axios</a></td>
-    </tr>
-    <tr>
-        <td> <img src="https://img.icons8.com/color/30/null/javascript--v1.png" alt="icono de JavaScript" width="30" height="30" /> JavaScript</td>
-        <td> <img src="https://img.icons8.com/plasticine/30/null/react.png" alt="icono de React" width="30" height="30" /> React</td>
-        <td><a href="https://reactrouter.com/en/main">React Router DOM</a></td>
-    </tr>
-    <tr>   
-        <td> <img src="https://img.icons8.com/color/30/null/css3.png" alt="icono de CSS3" width="30" height="30" /> CSS3</td>
-        <td> <img src="https://img.icons8.com/color/30/null/bootstrap.png" alt="icono de Bootstrap" width="30" height="30" /><a href="https://react-bootstrap.github.io/"> React Bootstrap</a></td>
-        <td><a href="https://sweetalert2.github.io/">Sweet Alert 2</a> used in error messages</td>
-    </tr>
-<tr>
- <td><a href="https://www.npmjs.com/package/yup">yup</a> for input validation</td>
-    </tr>
-</table>
+### `npm test`
 
-## :tv: [**Demo**](https://my-tvshows.netlify.app/)
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

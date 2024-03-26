@@ -6,6 +6,7 @@ import { URL_IMAGE } from "../../constants/constants";
 import Accordion from "react-bootstrap/Accordion";
 import { PosterDownload } from "./Poster/Download";
 import Posterize from "./Poster/Posterize";
+import FavoriteButtonIcon from "./favorites/FavoriteButton";
 import "../../App.css";
 
 export default function ShowCard(props) {
@@ -19,7 +20,7 @@ export default function ShowCard(props) {
   function handleStyleChange(value) {
     setPosterStyle(value);
   }
-//shows info from one show inside a card. 
+  //shows info from one show inside a card.
   return (
     <div>
       {props.showData && (
@@ -28,17 +29,24 @@ export default function ShowCard(props) {
             <div className="col-md-8 col-lg-8">
               <Card className="m-5 shadow-lg rounded">
                 <div className="bg-white p-3 m-1 mt-3 rounded">
-               {/* poster */}
+                  {/* poster */}
                   <Accordion className="p-1 mb-4 " id="acordion">
                     <Accordion.Item eventKey="0">
-                      <Accordion.Header ><span className="fw-bold">Posterizar</span></Accordion.Header>
+                      <Accordion.Header>
+                        <span className="fw-bold">Posterizar</span>
+                      </Accordion.Header>
                       <Accordion.Body id="posterizarButton">
                         <Posterize
                           posterText={posterText}
                           handleChange={handleChange}
                         />
                         <div className="d-flex align-items-center mb-3">
-                          <label htmlFor="posterStyle" className="me-2 text-light">Seleccionar estilo</label>
+                          <label
+                            htmlFor="posterStyle"
+                            className="me-2 text-light"
+                          >
+                            Seleccionar estilo
+                          </label>
                           <select
                             id="posterStyle"
                             className="form-select"
@@ -55,16 +63,23 @@ export default function ShowCard(props) {
                   </Accordion>
 
                   <div className="meme p-0 m-0 row d-flex " id="download">
-                        {/* Change className based on selected font style */}
-                        <h2 className={` ${posterStyle === "retro" ? "meme-text-retro top" : "meme-text top"}`}>{posterText}</h2>
+                    {/* Change className based on selected font style */}
+                    <h2
+                      className={` ${
+                        posterStyle === "retro"
+                          ? "meme-text-retro top"
+                          : "meme-text top"
+                      }`}
+                    >
+                      {posterText}
+                    </h2>
 
                     <img
                       //  crossOrigin="anonymous"
                       // cross-origin="use-credentials"
-                       src={`${URL_IMAGE + props.showData.poster_path}`}
+                      src={`${URL_IMAGE + props.showData.poster_path}`}
                       className="meme-image w-50 h-auto "
                       alt="meme"
-                     
                     />
                   </div>
                   <Card.Body>
@@ -82,6 +97,15 @@ export default function ShowCard(props) {
                         <ListGroup.Item>
                           <span className="fs-5">
                             {props.showData.overview}
+                          </span>
+                        </ListGroup.Item>
+                      
+                        <ListGroup.Item /* Icons*/>
+                          <span className="fw-bold m-4 mb-0 fs-5">
+                              <FavoriteButtonIcon
+                              isFavorite={props.isFavorite}
+                              handleFavoriteToggle={props.handleFavoriteToggle}
+                            />
                           </span>
                         </ListGroup.Item>
                         <ListGroup.Item>

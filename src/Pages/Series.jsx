@@ -1,6 +1,6 @@
 import React from 'react';
 import Show from '../Components/ShowShows/Show';
-import NavBar from '../Components/NavBar';
+import NavBar from '../Components/Nav/NavBar';
 
 const Series = () => {
   return (

@@ -6,11 +6,8 @@ import {
   LANGUAGE,
   URL_DISCOVER,
 } from "../../constants/constants";
-import Pagination from "./Pagination"
 
-
-const API_KEY =process.env.REACT_APP_MOVIE_API_KEY;
-
+const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
 const ShowSeries = () => {
   const [showData, setShowData] = useState([]);
@@ -22,9 +19,9 @@ const ShowSeries = () => {
       try {
         const data = await fetchShowData(URL);
         setShowData(data.results);
-       // console.log("showData:", showData);
+        // console.log("showData:", showData);
       } catch (error) {
-        console.error(error);
+        // console.error(error);
       }
     };
 

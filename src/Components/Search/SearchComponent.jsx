@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchShowData } from "../../Helper";
 import SearchResultsCarousel from "./SearchResultsCarousel";
 import InputSearch from "./input";
-import { URLSERACH } from "../../constants/constants";
+import { URLSEARCH } from "../../constants/constants";
 import Swal from "sweetalert2";
 
 const API_KEY =process.env.REACT_APP_MOVIE_API_KEY;
@@ -15,7 +15,7 @@ const SearchComponent = () => {
   const [initialSearchPerformed, setInitialSearchPerformed] = useState(false);//prevents the alert being shown on page reload
   const [noResultsAlert, SetnoResultsAlert] = useState(false);
 
-  const URL = `${URLSERACH}?api_key=${API_KEY}&query=${searchInput}`;
+  const URL = `${URLSEARCH}?api_key=${API_KEY}&query=${searchInput}`;
 
   const showSearchData = async () => {
     try {
