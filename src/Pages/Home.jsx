@@ -1,17 +1,15 @@
-import React from 'react';
-import SearchComponent from '../Components/Search/SearchComponent';
-import ShowSeries from '../Components/FetchAllShows/FetchShows';
+import React from "react";
+import SearchComponent from "../Components/Search/SearchComponent";
+import ShowSeries from "../Components/FetchAllShows/FetchShows";
 
-import  Navbar  from '../Components/NavBar';
+import NavBar from "../Components/Nav/NavBar";
 
 const Home = () => {
   return (
     <div>
-      <Navbar/>
+      <NavBar />
       <SearchComponent />
-     
       <ShowSeries />
-    
     </div>
   );
 };
