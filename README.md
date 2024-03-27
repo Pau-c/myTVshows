@@ -27,7 +27,7 @@ git clone https://github.com/Pau-c/myTVshows.git
 
 3. Install NPM packages
 
-```js
+```
 npm install
 ```
 
