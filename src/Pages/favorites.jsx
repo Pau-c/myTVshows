@@ -6,6 +6,7 @@ import NavBar from "../Components/Nav/NavBar";
 import Swal from "sweetalert2";
 import { Container } from "react-bootstrap";
 import Content from "../Components/ShowShows/favorites/FavoritesContent";
+import {COLLECTION_favorites} from "../constants/constants";
 
 const FavoritesList = () => {
   const { user } = useAuth(); // Brings user from context
@@ -35,7 +36,7 @@ const FavoritesList = () => {
   const handleDeleteFavorite = async (favoriteId) => {
     try {
       const db = getFirestore();
-      const favoriteRef = doc(db, "favorite", favoriteId);
+      const favoriteRef = doc(db, COLLECTION_favorites, favoriteId);
       await deleteDoc(favoriteRef);
 
       setFavorites((prevFavorites) =>
