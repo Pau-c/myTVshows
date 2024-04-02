@@ -38,7 +38,6 @@ git clone https://github.com/Pau-c/myTVshows.git
 ```
 
 3. Install NPM packages
-
 ```
 npm install
 ```
@@ -46,8 +45,8 @@ npm install
 4. `install Firebase`
    
 > [!IMPORTANT]
-> Get a `Firestore/Firebase` account and make an `.env` file in root with the `SDKs` from Firebase and the `API key` TMDB provided.
-> Add the prefix `REACT_APP_` to every variable.
+> Get a `Firestore/Firebase` account and make an `.env` file in root with the `SDKs` from Firebase and the `API key` TMDB provided. 
+> Add the prefix `REACT_APP_FIREBASE_` to every variable.
 > It should look like this:
 
 ```
@@ -61,22 +60,20 @@ REACT_APP_FIREBASE_appId=
 //key for tmdb api
 REACT_APP_MOVIE_API_KEY=
 ```
-
+5. Run the app in http://localhost:3000 by writing `npm start` in the console
 ---
 ## :tv: [**Demo**](https://my-tvshows.netlify.app/)
 
 <!-- PROJECT SHIELDS VARIABLES-->
-
-
-[axios-shield]:https://img.shields.io/badge/Routes-axios-black?labelColor=black&color=teal
+[axios-shield]:https://img.shields.io/badge/Routes-Axios-black?style=flat&labelColor=%23808080k&color=teal
 [axios-url]:https://axios-http.com/
-[bootstrap-shield]:https://img.shields.io/badge/CSS-React_Bootstrap-black?labelColor=black&color=teal
+[bootstrap-shield]:https://img.shields.io/badge/CSS-React_Bootstrap-black?style=flat&labelColor=%23808080k&color=teal
 [bootstrap-url]: https://react-bootstrap.github.io/
-[firebase-shield]:https://img.shields.io/badge/DB-Firebase-black?labelColor=black&color=teal
+[firebase-shield]:https://img.shields.io/badge/DB-Firebase-black?style=flat&labelColor=%23808080k&color=teal
 [firebase-url]:https://firebase.google.com/
 [react-shield]:https://img.shields.io/badge/Front-React%2FJs-red
 [react-url]:https://www.npmjs.com/package/react
-[sweetAlert2-shield]: https://img.shields.io/badge/Alerts-SweetAlerts2-black?labelColor=black&color=teal
+[sweetAlert2-shield]: https://img.shields.io/badge/Alerts-SweetAlerts2-black?style=flat&labelColor=%23808080k&color=teal
 [sweetAlert2-url]: https://sweetalert2.github.io/
-[yup-shield]:https://img.shields.io/badge/Validation-yup-black?labelColor=black&color=teal
+[yup-shield]:https://img.shields.io/badge/Validation-yup-black?style=flat&labelColor=%23808080k&color=teal
 [yup-url]: https://www.npmjs.com/package/yup
