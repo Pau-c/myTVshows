@@ -47,7 +47,7 @@ body:
         - Browser: [e.g. Chrome, Safari]
         - Version: [e.g. 22]
     validations:
-      required: true
+      required: false
   - type: textarea
     attributes:
       label: Additional context
