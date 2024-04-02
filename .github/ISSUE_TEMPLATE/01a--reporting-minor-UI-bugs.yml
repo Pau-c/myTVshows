@@ -1,0 +1,22 @@
+name: Issue - minor UX/UI Bug
+description: Report minor UX/UI Bug
+labels: ["type: minor bug", "status: waiting triage"]
+body:
+  - type: textarea
+    attributes:
+      label: Describe the Issue
+      description: A clear and concise description of the issue you encountered.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Affected Page
+      description: Add a link to the affected page.
+    validations:
+      required: true
+  - type: textarea
+    attributes:  
+      label: Other observations
+      description: Please add extra details if necessary.
+    validations:
+      required: false
