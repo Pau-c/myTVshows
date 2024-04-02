@@ -2,7 +2,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import ListGroup from "react-bootstrap/ListGroup";
-import Button from "react-bootstrap/Button";
+import AtomButton from "../../Atoms/Button";
 
 export default function Content(props) {
   const placement = "left"; // tooltip placement
@@ -26,9 +26,11 @@ export default function Content(props) {
                     </Tooltip>
                   }
                 >
-                  <Button onClick={() => props.handleDeleteFavorite(el.id)}>
-                    <AiOutlineDelete />
-                  </Button>
+                  <AtomButton 
+                    // You can adjust this linkTo prop as needed
+                    onClick={() => props.handleDeleteFavorite(el.id)}
+                    buttonText={<AiOutlineDelete />}
+                  />
                 </OverlayTrigger>
 
                 <span className="m-3 fw-light text-dark fs-3">{el.name}</span>

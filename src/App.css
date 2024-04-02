@@ -17,6 +17,27 @@ border: none !important;
 	border: none !important;
  }
 
+.navbar-text{
+	
+		font-family: "VT323", monospace;
+		font-weight: 400;
+		font-style: normal;
+	  
+	  
+}
+
+.button{
+	background-color: rgb(1, 184, 168);
+	color: rgb(86, 56, 95);
+	font-weight: bold;
+	border: none;
+}
+
+.button:hover {
+	background-color: rgb(86, 56, 95)!important;
+	color: rgb(1, 184, 168)!important;
+
+  }
 
 
 	.accordion-button{

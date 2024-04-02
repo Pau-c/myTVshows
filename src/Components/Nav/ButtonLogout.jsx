@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth } from "../context/AuthContext";
 import Swal from "sweetalert2";
-import Button from 'react-bootstrap/Button';
+import AtomButton from "../Atoms/Button";
 
 const LogoutButton = () => {
   const { user, logout } = useAuth();
@@ -12,7 +12,7 @@ const LogoutButton = () => {
   };
 
   if (user) {
-    return <Button className="m-2 mx-2" onClick={handleLogout}>Logout</Button>;
+    return <AtomButton onClick={handleLogout} buttonText="Logout" />;
   }
 
   return null;

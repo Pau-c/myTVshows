@@ -5,13 +5,15 @@ import Navbar from "react-bootstrap/Navbar";
 import "../../App.css";
 
 import Offcanvas from "react-bootstrap/Offcanvas";
-import LogoutButton from "./LogoutButton";
-import LoginButton from "./LoginButton";
+import LogoutButton from "../Nav/ButtonLogout";
+
+import LoginButton from "../Nav/ButtonLogin"
 import { useAuth } from "../context/AuthContext";
 
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import { AiFillHeart } from "react-icons/ai";
+
+import AtomButton from "../Atoms/Button";
+import { FaHeartCircleCheck } from "react-icons/fa6";
 
 function NavBar() {
   const { user } = useAuth(); // Retrieve the user from the AuthContext
@@ -29,7 +31,7 @@ function NavBar() {
               alt="logo"
             />
 
-            <span className="display-1 text-light align-self-baseline">
+            <span className="display-1 text-light align-self-baseline navbar-text">
               myTVshows
             </span>
           </Navbar.Brand>
@@ -48,16 +50,16 @@ function NavBar() {
                 <Nav className="  pe-3 ">
                   <div className="d-flex flex-column flex-md-row align-items-md-center ">
                     <div className="mb-3 mb-md-0">
-                      {/* show favorites button */}
+                      {/* show favorites button if user is logged in */}
                       {user ? (
-                        <Button>
-                          <Link
-                            to="/favorites"
-                            className="text-light bold p-0 m-0"
-                          >
-                            Favorites <AiFillHeart />
-                          </Link>
-                        </Button>
+                        <AtomButton  className="text-light bold p-0 m-0"
+                        linkTo="/favorites" // You can adjust this linkTo prop as needed
+                        
+                        buttonText={<>
+                        Favorites<FaHeartCircleCheck />
+                        </> }
+                      />
+                       
                       ) : (
                         ""
                       )}
@@ -76,7 +78,8 @@ function NavBar() {
                       ) : showPath === "login" ? (
                         ""
                       ) : (
-                        <LoginButton />
+                     
+                      <LoginButton />
                       )}
                     </div>
                   </div>
