@@ -4,10 +4,13 @@ on:
   issues:
     types: [closed]
 
+permissions:
+  issues: write
+  contents: read
+
 jobs:
   update_labels:
     runs-on: ubuntu-latest
-
 
     steps:
       - name: Check if Issue is Closed (Non-Pull Request)
