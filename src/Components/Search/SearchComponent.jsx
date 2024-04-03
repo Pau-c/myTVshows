@@ -5,14 +5,13 @@ import InputSearch from "./input";
 import { URLSEARCH } from "../../constants/constants";
 import Swal from "sweetalert2";
 
-const API_KEY =process.env.REACT_APP_MOVIE_API_KEY;
-
+const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
 const SearchComponent = () => {
   const [shows, setShows] = useState([]);
   const [search, setSearch] = useState("");
   const [searchInput, setSearchInput] = useState("");
-  const [initialSearchPerformed, setInitialSearchPerformed] = useState(false);//prevents the alert being shown on page reload
+  const [initialSearchPerformed, setInitialSearchPerformed] = useState(false); //prevents the alert being shown on page reload
   const [noResultsAlert, SetnoResultsAlert] = useState(false);
 
   const URL = `${URLSEARCH}?api_key=${API_KEY}&query=${searchInput}`;
@@ -22,7 +21,11 @@ const SearchComponent = () => {
       const data = await fetchShowData(URL);
       setShows(data.results);
 
-      if (initialSearchPerformed && data.results.length === 0 && searchInput !== "") {
+      if (
+        initialSearchPerformed &&
+        data.results.length === 0 &&
+        searchInput !== ""
+      ) {
         SetnoResultsAlert(true);
       }
     } catch (error) {
@@ -42,8 +45,8 @@ const SearchComponent = () => {
 
   const handleSearch = () => {
     setSearch(searchInput);
-    setInitialSearchPerformed(true);//sweetAlert
-    SetnoResultsAlert(false);//sweetAlert
+    setInitialSearchPerformed(true); //sweetAlert
+    SetnoResultsAlert(false); //sweetAlert
     showSearchData();
   };
 
@@ -58,12 +61,12 @@ const SearchComponent = () => {
   useEffect(() => {
     if (noResultsAlert) {
       Swal.fire({
-        title: "No shows found by that name",
-       
+        title: "No se encontraron series con ese nombre",
         timer: 1500,
-        icon: "error",
-        iconColor: "red",
-              });
+        icon: "warning",
+        iconColor: "orange",
+        showConfirmButton: false,
+      });
     }
   }, [noResultsAlert]);
 

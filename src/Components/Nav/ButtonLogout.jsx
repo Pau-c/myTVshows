@@ -1,18 +1,18 @@
 import React from "react";
 import { useAuth } from "../context/AuthContext";
-import Swal from "sweetalert2";
 import AtomButton from "../Atoms/Button";
+import { errorPopupToast } from "../PopUpMsg";
 
 const LogoutButton = () => {
   const { user, logout } = useAuth();
 
   const handleLogout = () => {
     logout();
-    Swal.fire("Logged Out");
-  };
+    errorPopupToast("Saliste de la aplicacion");
+    };
 
   if (user) {
-    return <AtomButton onClick={handleLogout} buttonText="Logout" />;
+    return <AtomButton onClick={handleLogout} buttonText="Salir" />;
   }
 
   return null;
