@@ -88,7 +88,7 @@ const Show = () => {
   const status =
     showData && showData.in_production ? "(Continua)" : "(Terminada)";
 
-  // Render the ShowCard component with props
+  // Render  ShowCard component with props
   return (
     <ShowCard
       status={status}
