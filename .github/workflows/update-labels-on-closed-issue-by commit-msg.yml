@@ -25,7 +25,7 @@ jobs:
 
       - name: Update Labels for Valid Closed Issue
         if: steps.check_closed_issue.outputs.closed_issue_number # if issue found
-        uses: actions/labeler@v5
+        uses: actions/labeler@v4
         with:
           github-token: ${{ secrets.TOKEN_GITHUB }}
           labelers: |
