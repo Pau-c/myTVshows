@@ -6,11 +6,15 @@ import NavBar from "../Components/Nav/NavBar";
 import Swal from "sweetalert2";
 import { Container } from "react-bootstrap";
 import Content from "../Components/ShowShows/favorites/FavoritesContent";
-import {COLLECTION_favorites} from "../constants/constants";
+import { COLLECTION_favorites } from "../constants/constants";
+import { errorPopupMsg } from "../Components/PopUpMsg";
 
 const FavoritesList = () => {
   const { user } = useAuth(); // Brings user from context
   const [favorites, setFavorites] = useState([]);
+  // text for error msg
+  const errorPopupMsgFetch = "No se pudo encontrar favoritos";
+  const errorPopupMsgdelete = "No se pudieron borrar los favoritos";
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -24,8 +28,8 @@ const FavoritesList = () => {
           }));
           setFavorites(allFavoritesData);
         } catch (e) {
-          console.error("Couldn't get favorites: ", e);
-          Swal.fire("Couldn't get favorites");
+          console.error("Couldn't get favorites", e);
+          errorPopupMsg(errorPopupMsgFetch);
         }
       }
     };
@@ -44,7 +48,7 @@ const FavoritesList = () => {
       );
     } catch (e) {
       console.error("Error deleting favorite: ", e);
-      Swal.fire("Couldn't delete favorites");
+      errorPopupMsg(errorPopupMsgdelete);
     }
   };
 

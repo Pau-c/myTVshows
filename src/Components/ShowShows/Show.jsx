@@ -7,6 +7,7 @@ import { checkFavoriteStatus } from "./favorites/checkFavoriteStatus";
 import { addFavorite } from "./favorites/addFavorite";
 import { deleteFavorite } from "./favorites/deleteFavorite";
 import Swal from "sweetalert2";
+import { errorPopupMsg } from "../PopUpMsg";
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
@@ -58,7 +59,7 @@ const Show = () => {
       }
     } else {
       // Show alert if user is not logged in
-      Swal.fire("You can't do that, log in first");
+      errorPopupMsg("Acceso no permitido, primero logueate");
     }
   };
 

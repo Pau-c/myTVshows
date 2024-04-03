@@ -7,7 +7,7 @@ import "../../App.css";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import LogoutButton from "../Nav/ButtonLogout";
 
-import LoginButton from "../Nav/ButtonLogin"
+import LoginButton from "../Nav/ButtonLogin";
 import { useAuth } from "../context/AuthContext";
 
 import { Link } from "react-router-dom";
@@ -52,14 +52,16 @@ function NavBar() {
                     <div className="mb-3 mb-md-0">
                       {/* show favorites button if user is logged in */}
                       {user ? (
-                        <AtomButton  className="text-light bold p-0 m-0"
-                        linkTo="/favorites" // You can adjust this linkTo prop as needed
-                        
-                        buttonText={<>
-                        Favorites<FaHeartCircleCheck />
-                        </> }
-                      />
-                       
+                        <AtomButton
+                          className="text-light bold p-0 m-0"
+                          linkTo="/favorites"
+                          buttonText={
+                            <>
+                              Favoritos
+                              <FaHeartCircleCheck />
+                            </>
+                          }
+                        />
                       ) : (
                         ""
                       )}
@@ -69,7 +71,7 @@ function NavBar() {
                     <div className="d-flex align-items-md-center mb-3 mb-md-0 ">
                       {user && (
                         <mark className="mt-0 mx-2 px-3 text-info fw-bold rounded-4">
-                          {"Account: " + user.email}
+                          {"Usuario: " + user.email}
                         </mark>
                       )}
                       {/* if there's a user, show logout, if there's no user logged in and the current path is login, dont show login button */}
@@ -78,8 +80,7 @@ function NavBar() {
                       ) : showPath === "login" ? (
                         ""
                       ) : (
-                     
-                      <LoginButton />
+                        <LoginButton />
                       )}
                     </div>
                   </div>

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import Swal from "sweetalert2";
+import { successPopupToast, errorPopupToast } from "../../PopUpMsg";
 import NavBar from "../../Nav/NavBar";
-import {UserSchema} from "../../../Validation/inputValidation"
+import { UserSchema } from "../../../Validation/inputValidation";
 import LoginComponent from "./LoginComponent";
 
 export function Login() {
@@ -17,21 +17,18 @@ export function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
- 
-   
+
     try {
       // Validate the user input
       await UserSchema.validate(user, { abortEarly: false });
       await login(user.email, user.password);
-      Swal.fire("Logged in");
+      successPopupToast("Usuario autenticado");
       navigate("/");
     } catch (error) {
-        console.log(error.message);
-        Swal.fire( error.message);
-      }
-    
+      console.log(error.message);
+      errorPopupToast("Error en usuario o pass");
+    }
   };
-
 
   const handleChange = ({ target: { value, name } }) =>
     setUser({ ...user, [name]: value });
@@ -42,16 +39,20 @@ export function Login() {
       navigate("/");
     } catch (error) {
       console.log(error.message);
-      Swal.fire(error.message);
+      errorPopupToast("error.message");
     }
   };
 
-  
   return (
     <>
-    <NavBar />
+      <NavBar />
 
-    <LoginComponent error={error} handleChange={handleChange} handleGoogleSignin={handleGoogleSignin} handleSubmit={handleSubmit}/>
-       </>
+      <LoginComponent
+        error={error}
+        handleChange={handleChange}
+        handleGoogleSignin={handleGoogleSignin}
+        handleSubmit={handleSubmit}
+      />
+    </>
   );
 }
