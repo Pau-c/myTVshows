@@ -1,0 +1,35 @@
+name: Update Labels on Closed Issues
+
+on:
+  issues:
+    types: [closed]
+
+jobs:
+  update_labels:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check if Issue is Closed (Non-Pull Request)
+        # The script works only with issues, not pull requests
+        if: github.event.issue.pull_request == 'false'
+        run: |
+          if [[ "${{ github.event.issue.state }}" == "closed" ]]; then
+            issue_number="${{ github.event.issue.number }}"
+            for label in ${{ github.event.issue.labels.*.name }}; do
+              if [[ $label =~ "bug" || $label =~ "feature request" ]]; then
+                echo "::set-output name=closed_issue_number::$issue_number"
+                break  # Exit the loop after finding at least one matching label
+              fi
+            done
+          fi
+
+      - name: Update Labels for Valid Closed Issue
+        if: steps.check_closed_issue.outputs.closed_issue_number # if issue found
+        uses: actions/labeler@v5
+        with:
+          github-token: ${{ secrets.TOKEN_GITHUB }}
+          labelers: |
+            - issue: ${{ steps.check_closed_issue.outputs.closed_issue_number }} 
+              actions:  
+                - add: "status: fixed" 
+                - remove: "status: waiting triage"
