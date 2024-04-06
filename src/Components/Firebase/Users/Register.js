@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { UserSchema } from "../../../Validation/inputValidation";
-import Swal from "sweetalert2";
+import {popupToast} from "../../PopUpMsg"
 import RegisterComponent from "./RegisterComponent";
 import NavBar from "../../Nav/NavBar";
 
@@ -34,7 +34,7 @@ export function Register() {
       navigate("/");
     } catch (error) {
       setError(error.message);
-      Swal.fire(error.message);
+      popupToast(error);
     }
   };
 

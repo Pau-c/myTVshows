@@ -12,7 +12,6 @@ export default function RegisterComponent(props) {
       <div className="container-fluid mx-3  h-100 d-flex justify-content-start align-items-center flex-column">
         <h1 className="display-3 m-5 glowSubHeaders ">Registrarse</h1>
         <Card className="m-5 shadow-lg rounded bg-white ">
-          {props.error}
           <Form
             onSubmit={props.handleSubmit}
             className="bg-white shadow-md rounded px-3 py-2  m-4"
