@@ -26,11 +26,35 @@ const Show = () => {
 
   // Function to fetch show data
   const fetchShow = async (showId) => {
-    const data = await fetchShowData(
-      `${URL}${showId}?api_key=${API_KEY}${LANGUAGE}`
+    const data1 = await fetchShowData(
+      `${URL}${showId}?api_key=${API_KEY}${LANGUAGE}&append_to_response=aggregate_credits`
     );
-    setShowData(data);
+  
+    const {
+      genres,
+      name,
+      number_of_episodes,
+      number_of_seasons,
+      overview,
+      poster_path,
+      seasons,
+      status,
+      aggregate_credits,
+    } = data1;
+
+    setShowData({
+      genres,
+      name,
+      number_of_episodes,
+      number_of_seasons,
+      aggregate_credits,
+      overview,
+      poster_path,
+      seasons,
+      status
+    });
   };
+  
 
   // Fetch show data when the component mounts
   useEffect(() => {
@@ -74,12 +98,30 @@ const Show = () => {
 
   // Render genre elements based on show data
   let genreElements = null;
-  //console.log(showData)
+  console.log(showData, "edited object")
   if (showData && showData.genres) {
     genreElements = showData.genres.map((genre) => (
       <span key={genre.id}> |{genre.name}| </span>
     ));
   }
+
+  // Render the top 10 cast by number of eps involved  
+  let castElements = null;
+
+  if (showData && showData.aggregate_credits && showData.aggregate_credits.cast) {
+    const castArray = showData.aggregate_credits.cast;
+    const first10Cast = [];
+    
+    for (let i = 0; i < 11; i++) {
+      first10Cast.push(castArray[i]);
+    }
+  console.log(first10Cast, "cast");
+  castElements = first10Cast.map((actor) => (
+    <span key={actor.id}>
+      | {actor.name} ({actor.total_episode_count}) 
+    </span>
+  ));
+  }  
 
   // Render seasons elements based on show data
   let seasonsElements = null;
@@ -105,6 +147,7 @@ const Show = () => {
       seasonsElements={seasonsElements}
       showData={showData}
       genreElements={genreElements}
+      castElements={castElements}
       isFavorite={isFavorite}
       handleFavoriteToggle={handleFavoriteToggle}
     />

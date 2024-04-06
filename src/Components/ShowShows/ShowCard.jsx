@@ -115,6 +115,24 @@ export default function ShowCard(props) {
                           <span className="fs-5">{props.genreElements}</span>
                         </ListGroup.Item>
                         <ListGroup.Item>
+                          <span className="fw-bold m-4 mb-0 fs-5">
+                            Nro de capitulos:
+                          </span>
+                          <span className="fs-5">{props.showData.number_of_episodes}</span>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                          <span className="fw-bold m-4 mb-0 fs-5">
+                            Nro de temporadas:
+                          </span>
+                          <span className="fs-5">{props.showData.number_of_seasons}</span>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                          <span className="fw-bold m-4 mb-0 fs-5">
+                            Elenco- por cantidad de capitulos:
+                          </span>
+                          <span className="fs-5">{props.castElements}</span>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
                           <span className="fs-5">{props.seasonsElements}</span>
                         </ListGroup.Item>
                       </ListGroup>
