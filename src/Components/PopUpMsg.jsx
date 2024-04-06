@@ -1,10 +1,11 @@
 import Swal from "sweetalert2";
 
+//For error messages don't pass color as an argument when calling the function. Leave default
 //Popup error message
-export const errorPopupMsg = (text) =>
+export const popupMsg = (text, color = "red", icon = "error") =>
   Swal.fire({
-    icon: "error",
-    iconColor: "red",
+    icon: icon,
+    iconColor: color,
     title: text,
     showConfirmButton: false,
     timer: 1500,
@@ -12,7 +13,7 @@ export const errorPopupMsg = (text) =>
 
 //
 //Toasts msg
-export const errorPopupToast = (text) => {
+export const popupToast = (text, iconColor = "red", icon = "error") => {
   const Toast = Swal.mixin({
     toast: true,
     position: "top-end",
@@ -21,23 +22,8 @@ export const errorPopupToast = (text) => {
     timerProgressBar: true,
   });
   Toast.fire({
-    icon: "warning",
-    iconColor: "#f39f18",
-    title: text,
-  });
-};
-
-export const successPopupToast = (text) => {
-  const Toast = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 1500,
-    timerProgressBar: true,
-  });
-  Toast.fire({
-    icon: "success",
-    iconColor: "#9acd32",
+    icon: icon,
+    iconColor: iconColor,
     title: text,
   });
 };

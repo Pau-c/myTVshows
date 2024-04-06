@@ -1,94 +1,96 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
+import { Nav, Row, Container, Col } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import "../../App.css";
-
 import Offcanvas from "react-bootstrap/Offcanvas";
 import LogoutButton from "../Nav/ButtonLogout";
-
 import LoginButton from "../Nav/ButtonLogin";
 import { useAuth } from "../context/AuthContext";
-
-import { Link } from "react-router-dom";
-
-import AtomButton from "../Atoms/Button";
-import { FaHeartCircleCheck } from "react-icons/fa6";
+import burgerMenu from "../Nav/burgerMenu.svg";
+import ButtonFavoriteList from "../Nav/ButtonFavoritesList";
 
 function NavBar() {
   const { user } = useAuth(); // Retrieve the user from the AuthContext
   // get path from url
   const urlPath = window.location.pathname;
   const showPath = urlPath.substring(urlPath.lastIndexOf("/") + 1);
+
   return (
     <>
-      <Navbar className="bg-body-tertiary mb-3 NavBar " expand="lg">
-        <Container fluid className="align-content-md-center">
-          <Navbar.Brand href="/">
-            <img
-              src="/Television-comic.svg"
-              className=" “img-fluid d-inline-block align-top w-25 h-auto pt-2  m-2 mt-3"
-              alt="logo"
-            />
+      <Navbar className="bg-body-tertiary mb-3 NavBar shadow " expand="false">
+        <Container fluid className="`align-content-md-center`">
+          <Row>
+            <Col>
+              <Navbar.Brand href="/">
+                <img
+                  src="/Television-comic.svg"
+                  className="img-fluid d-inline-block align-top  pt-0 m-1 mt-0"
+                  alt="logo"
+                  style={{ height: "15vh" }}
+                />
 
-            <span className="display-1 text-light align-self-baseline navbar-text">
-              myTVshows
-            </span>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Navbar.Offcanvas
-              placement="end"
-              backdrop={false}
-              scroll={false}
-              className="navbar-offcanvas"
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title></Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="  pe-3 ">
-                  <div className="d-flex flex-column flex-md-row align-items-md-center ">
-                    <div className="mb-3 mb-md-0">
-                      {/* show favorites button if user is logged in */}
-                      {user ? (
-                        <AtomButton
-                          className="text-light bold p-0 m-0"
-                          linkTo="/favorites"
-                          buttonText={
-                            <>
-                              Favoritos
-                              <FaHeartCircleCheck />
-                            </>
-                          }
-                        />
-                      ) : (
-                        ""
-                      )}
-                    </div>
-
-                    {/* If there's a user logged in, show the email and logout button */}
-                    <div className="d-flex align-items-md-center mb-3 mb-md-0 ">
+                <span className="display-1 text-light align-self-baseline navbar-text neon higlight-shadow">
+                  mytvShows
+                </span>
+              </Navbar.Brand>
+            </Col>
+            <Col md={2}>
+              <Navbar.Toggle
+                aria-controls="navbarScroll "
+                className="p-0 border-0 "
+              >
+                <div className="neon">
+                  <img
+                    src={burgerMenu}
+                    alt="BurguerMenu Icon"
+                    style={{ width: "20%" }}
+                  />
+                </div>
+              </Navbar.Toggle>
+            </Col>
+            <Navbar.Collapse id="navbarScroll ">
+              <Navbar.Offcanvas
+                placement="end"
+                backdrop={false}
+                scroll={false}
+                className="navbar-offcanvas border-0 shadow p-3 offcanvas-background  "
+              >
+                {/* collapsed menu */}
+                <Offcanvas.Header closeButton>
+                  <Offcanvas.Title>
+                    <span className=" glowSubHeaders fw-bold"> Menu</span>
+                  </Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                  <Nav className="pe-3">
+                    <Row className="align-items-center">
+                      {/* If there's a user logged in, show the email */}
                       {user && (
-                        <mark className="mt-0 mx-2 px-3 text-info fw-bold rounded-4">
+                        <mark className="mt-0 mx-2 px-3  fw-bold rounded-3 button glowButton">
                           {"Usuario: " + user.email}
                         </mark>
                       )}
-                      {/* if there's a user, show logout, if there's no user logged in and the current path is login, dont show login button */}
+                    </Row>{" "}
+                    <Row>
+                      {/* Show favorites button if user is logged in */}
+                      {user && ( <ButtonFavoriteList/>)
+                    };
+                    </Row>
+                    <Row>
+                      {/* Show login/logout button */}
                       {user ? (
-                        <LogoutButton />
-                      ) : showPath === "login" ? (
-                        ""
+                        <LogoutButton className="order-0 order-md-1 " />
                       ) : (
-                        <LoginButton />
+                        showPath !== "login" && (
+                          <LoginButton className="order-0 order-md-1 " />
+                        )
                       )}
-                    </div>
-                  </div>
-                  <Nav.Link></Nav.Link>
-                </Nav>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Navbar.Collapse>
+                    </Row>
+                  </Nav>
+                </Offcanvas.Body>
+              </Navbar.Offcanvas>
+            </Navbar.Collapse>
+          </Row>
         </Container>
       </Navbar>
     </>

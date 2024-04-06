@@ -1,7 +1,7 @@
 import React from "react";
 import AtomButton from "../Atoms/Button";
 import { useAuth } from "../context/AuthContext";
-
+import "../../../src/App.css";
 //shows in navbar
 
 const LoginButton = () => {
@@ -12,7 +12,9 @@ const LoginButton = () => {
     return null;
   }
   // User's logged out, render button
-  return <AtomButton linkTo="/login" buttonText="Entrar" />;
+  return (
+    <AtomButton linkTo="/login" buttonText="Entrar" className="glowButton" />
+  );
 };
 
 export default LoginButton;

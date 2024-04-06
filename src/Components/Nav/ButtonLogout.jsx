@@ -1,18 +1,19 @@
 import React from "react";
 import { useAuth } from "../context/AuthContext";
 import AtomButton from "../Atoms/Button";
-import { errorPopupToast } from "../PopUpMsg";
+import { popupToast } from "../PopUpMsg";
+import { SUCCESS_COLOR } from "../../constants/constants";
 
 const LogoutButton = () => {
   const { user, logout } = useAuth();
 
   const handleLogout = () => {
     logout();
-    errorPopupToast("Saliste de la aplicacion");
-    };
+    popupToast("Saliste de la aplicacion", `${SUCCESS_COLOR}`, "success");
+  };
 
   if (user) {
-    return <AtomButton onClick={handleLogout} buttonText="Salir" />;
+    return <AtomButton className="glowButton" onClick={handleLogout} buttonText="Salir" />;
   }
 
   return null;

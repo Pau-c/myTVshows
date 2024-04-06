@@ -1,14 +1,12 @@
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-
+import AtomButton from "../../Atoms/Button";
 //shows in login page
 
 export default function LoginComponent(props) {
-  const placement = "left"; // tooltip placement 
+  const placement = "left"; // tooltip placement
   return (
     <div className="container-fluid mx-3 h-100 d-flex justify-content-start align-items-center flex-column">
       {props.error}
@@ -58,26 +56,27 @@ export default function LoginComponent(props) {
           </div>
 
           <div className="flex items-center justify-between">
-            <Button variant="primary" className="p-1 m-2" type="submit">
-              Entrar
-            </Button>
+            <AtomButton
+              className=""
+              type="submit"
+              buttonText="Entrar"
+              onClick={props.handleSubmit}
+            />
           </div>
         </Form>{" "}
       </Card>
       <div className="m-5">
-        <Button
-          variant="primary"
+        <AtomButton
           type="submit"
           onClick={props.handleGoogleSignin}
-        >
-          Sign in with Google
-        </Button>{" "}
+          buttonText="Usar Google para entrar"
+        />{" "}
         <div className="my-4 text-sm flex justify-between px-3">
-          <Button variant="secondary">
-            <Link to="/register" className="text-white">
-              Registrarse
-            </Link>
-          </Button>
+          <AtomButton
+            linkTo="/register"
+            className=""
+            buttonText="Registrarse"
+          />
         </div>{" "}
       </div>
     </div>

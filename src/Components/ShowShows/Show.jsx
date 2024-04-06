@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { fetchShowData } from "../../Helper";
 import ShowCard from "./ShowCard";
-import { URL_TV as URL, LANGUAGE } from "../../constants/constants";
+import {
+  URL_TV as URL,
+  LANGUAGE,
+  WARNING_COLOR,
+} from "../../constants/constants";
 import { checkFavoriteStatus } from "./favorites/checkFavoriteStatus";
 import { addFavorite } from "./favorites/addFavorite";
 import { deleteFavorite } from "./favorites/deleteFavorite";
-import Swal from "sweetalert2";
-import { errorPopupMsg } from "../PopUpMsg";
+import { popupMsg } from "../PopUpMsg";
+
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
@@ -17,6 +21,7 @@ const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 const Show = () => {
   const { user } = useAuth(); // Using the useAuth hook to get the current user
   const [showData, setShowData] = useState(null); // State variable for storing show data
+
   const [isFavorite, setIsFavorite] = useState(false); // State variable for tracking favorite status
 
   // Function to fetch show data
@@ -59,7 +64,11 @@ const Show = () => {
       }
     } else {
       // Show alert if user is not logged in
-      errorPopupMsg("Acceso no permitido, primero logueate");
+      popupMsg(
+        "Acceso no permitido, primero logueate",
+        `${WARNING_COLOR}`,
+        "error"
+      );
     }
   };
 

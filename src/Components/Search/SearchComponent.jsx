@@ -3,7 +3,8 @@ import { fetchShowData } from "../../Helper";
 import SearchResultsCarousel from "./SearchResultsCarousel";
 import InputSearch from "./input";
 import { URLSEARCH } from "../../constants/constants";
-import Swal from "sweetalert2";
+import { popupToast, popupMsg } from "../../Components/PopUpMsg";
+import { WARNING_COLOR } from "../../constants/constants";
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
@@ -13,7 +14,6 @@ const SearchComponent = () => {
   const [searchInput, setSearchInput] = useState("");
   const [initialSearchPerformed, setInitialSearchPerformed] = useState(false); //prevents the alert being shown on page reload
   const [noResultsAlert, SetnoResultsAlert] = useState(false);
-
   const URL = `${URLSEARCH}?api_key=${API_KEY}&query=${searchInput}`;
 
   const showSearchData = async () => {
@@ -30,12 +30,7 @@ const SearchComponent = () => {
       }
     } catch (error) {
       console.error(error);
-      Swal.fire({
-        title: "Error",
-        text: "Api error while fetching data",
-        icon: "error",
-        confirmButtonColor: "gray",
-      });
+      popupToast("Api error while fetching data", "error");
     }
   };
 
@@ -60,13 +55,11 @@ const SearchComponent = () => {
 
   useEffect(() => {
     if (noResultsAlert) {
-      Swal.fire({
-        title: "No se encontraron series con ese nombre",
-        timer: 1500,
-        icon: "warning",
-        iconColor: "orange",
-        showConfirmButton: false,
-      });
+      popupMsg(
+        "No se encontraron series con ese nombre",
+        `${WARNING_COLOR}`,
+        "warning"
+      );
     }
   }, [noResultsAlert]);
 

@@ -3,18 +3,19 @@ import { useAuth } from "../Components/context/AuthContext";
 import { getFirestore, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { allFavoritesQuery } from "../Components/ShowShows/favorites/getFavorites";
 import NavBar from "../Components/Nav/NavBar";
-import Swal from "sweetalert2";
 import { Container } from "react-bootstrap";
 import Content from "../Components/ShowShows/favorites/FavoritesContent";
 import { COLLECTION_favorites } from "../constants/constants";
-import { errorPopupMsg } from "../Components/PopUpMsg";
+import { popupMsg } from "../Components/PopUpMsg";
 
 const FavoritesList = () => {
   const { user } = useAuth(); // Brings user from context
   const [favorites, setFavorites] = useState([]);
+  const [loading, setLoading] = useState(true); //to control loading spinner
   // text for error msg
-  const errorPopupMsgFetch = "No se pudo encontrar favoritos";
-  const errorPopupMsgdelete = "No se pudieron borrar los favoritos";
+  const errorPopupMsgFetch = "No se pudo encontrar la lista de shows favoritos";
+  const errorPopupMsgdelete =
+    "No se pudo borrar el show de la lista de 'favoritos'";
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -27,9 +28,10 @@ const FavoritesList = () => {
             ...doc.data(),
           }));
           setFavorites(allFavoritesData);
+          setLoading(false);
         } catch (e) {
           console.error("Couldn't get favorites", e);
-          errorPopupMsg(errorPopupMsgFetch);
+          popupMsg(errorPopupMsgFetch);
         }
       }
     };
@@ -48,7 +50,7 @@ const FavoritesList = () => {
       );
     } catch (e) {
       console.error("Error deleting favorite: ", e);
-      errorPopupMsg(errorPopupMsgdelete);
+      popupMsg(errorPopupMsgdelete);
     }
   };
 
@@ -59,6 +61,7 @@ const FavoritesList = () => {
         <Content
           favorites={favorites}
           handleDeleteFavorite={handleDeleteFavorite}
+          loading={loading}
         />
       </Container>
     </>

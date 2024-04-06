@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Warnes&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 a {
   text-decoration: none;
   color: rgb(34, 34, 34);
@@ -7,124 +16,208 @@ a:hover {
   color: black;
 }
 #posterizarButtonSmall {
-background-color: #ef7796 !important;
-font-weight: bold;
+  background-color: #ef7796 !important;
+  font-weight: bold;
 
-border: none !important;
+  border: none !important;
 }
-#posterizarButton{ 
-	background-color:#474262;
-	border: none !important;
- }
-
-.navbar-text{
-	
-		font-family: "VT323", monospace;
-		font-weight: 400;
-		font-style: normal;
-	  
-	  
+#posterizarButton {
+  background-color: #474262;
+  border: none !important;
+}
+/* navbar brand text */
+.navbar-text {
+  font-family: "Warnes", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.button{
-	background-color: rgb(1, 184, 168);
-	color: rgb(86, 56, 95);
-	font-weight: bold;
-	border: none;
+/* Right menu buttons on mouseover */
+.button {
+  background-color: rgb(1, 184, 168);
+  color: rgb(86, 56, 95);
+  font-weight: bold;
+  border: none;
 }
 
 .button:hover {
-	background-color: rgb(86, 56, 95)!important;
-	color: rgb(1, 184, 168)!important;
+  background-color: rgb(86, 56, 95) !important;
+  color: rgb(1, 184, 168) !important;
+}
 
-  }
+.accordion-button {
+  box-shadow: none;
+  -webkit-box-shadow: none !important;
+  border: none !important;
+}
+.accordion-button:not(.collapsed) {
+  color: #000;
+}
 
+#button-input-search {
+  background-color: #ef7796;
+  border: none !important;
+}
 
-	.accordion-button{
-		
-		box-shadow: none; -webkit-box-shadow: none !important;
-		border: none !important;}
-		.accordion-button:not(.collapsed){
-			color: #000;}
-
-		#button-input-search{
-			background-color: #ef7796;
-			border: none !important;
-		}
-
-		.carousel-show-title{
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-		}
+.carousel-show-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 /* meme component */
 .meme {
-	position: relative;
-	margin-top: 3em;
-	align-self: center;
+  position: relative;
+  margin-top: 3em;
+  align-self: center;
   overflow: hidden;
-text-overflow:ellipsis;
+  text-overflow: ellipsis;
 }
 
 .meme-text {
-	position: relative;
-	width: 40%;	/* of the text line before it breaks */
-	text-align: left;
-	left:30%;	/* start of the meme text */
-	top:98em; /* text height  */
-	margin:  2px 2px 2px 2px;
-	padding: 2px 2px;
-	font-family: impact, sans-serif;
-	font-size: 2em;
-	text-transform: uppercase;
-	color: white;
-	letter-spacing: 1px;
-	text-shadow:
-		2px 2px 0 #000,
-		-2px -2px 0 #000,
-		2px -2px 0 #000,
-		-2px 2px 0 #000,
-		0 2px 0 #000,
-		2px 0 0 #000,
-		0 -2px 0 #000,
-		-2px 0 0 #000,
-		2px 2px 5px #000;
+  position: relative;
+  width: 40%; /* of the text line before it breaks */
+  text-align: left;
+  left: 30%; /* start of the meme text */
+  top: 98em; /* text height  */
+  margin: 2px 2px 2px 2px;
+  padding: 2px 2px;
+  font-family: impact, sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
+    2px 2px 5px #000;
 }
 
-.meme-text-retro{
-
-	position: relative;
-	width: 40%;	/* of the text line before it breaks */
-	text-align: left;
-	left:30%;	/* start of the meme text */
-	top:98em; /* text height  */
-	margin: 2px 2px 2px 2px;
-	padding: 2px 2px;
-	font-family:  "Lucida Handwriting";
-	font-size: 2em;
-	text-transform: lowercase;
-	color: white;
-	letter-spacing: 1px;
-	text-shadow:
-		2px 2px 0 #000,
-		-2px -2px 0 #000,
-		2px -2px 0 #000,
-		-2px 2px 0 #000,
-		0 2px 0 #000,
-		2px 0 0 #000,
-		0 -2px 0 #000,
-		-2px 0 0 #000,
-		2px 2px 5px #000;
+.meme-text-retro {
+  position: relative;
+  width: 40%; /* of the text line before it breaks */
+  text-align: left;
+  left: 30%; /* start of the meme text */
+  top: 98em; /* text height  */
+  margin: 2px 2px 2px 2px;
+  padding: 2px 2px;
+  font-family: "Lucida Handwriting";
+  font-size: 2em;
+  text-transform: lowercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
+    2px 2px 5px #000;
 }
 
 .bottom {
-	bottom: 0;
+  bottom: 0;
 }
 
 .top {
-	top: 0;
+  top: 0;
 }
-.NavBar{
-	background: rgb(72,49,83);
-background: linear-gradient(90deg, rgba(72,49,83,1) 0%, rgba(71,66,98,1) 41%, rgba(71,66,98,1) 54%, rgba(70,85,116,1) 69%, rgba(62,110,128,1) 83%, rgba(59,141,147,1) 92%, rgba(89,197,184,1) 100%);}
+
+mark {
+  background-color: rgb(1, 184, 168);
+}
+
+/* Navbar background */
+.NavBar {
+  background: rgb(72, 49, 83);
+  background: linear-gradient(
+    90deg,
+    rgba(72, 49, 83, 1) 0%,
+    rgba(71, 66, 98, 1) 21%,
+    rgba(71, 66, 98, 1) 30%,
+    rgba(70, 85, 116, 1) 50%,
+    rgba(62, 110, 128, 1) 63%,
+    rgba(59, 141, 147, 1) 72%,
+    rgba(89, 197, 184, 1) 100%
+  );
+  height: "20vh";
+}
+/* menu background */
+.offcanvas-background {
+  background: rgb(72, 49, 83);
+  background: linear-gradient(
+    150deg,
+    rgba(72, 49, 83, 1) 0%,
+    rgba(71, 66, 98, 1) 31%,
+    rgba(71, 66, 98, 1) 50%,
+    rgba(70, 85, 116, 1) 70%,
+    rgba(62, 110, 128, 1) 83%,
+    rgba(59, 141, 147, 1) 92%,
+    rgba(89, 197, 184, 1) 100%
+  );
+}
+.spinner-color {
+  background: rgb(72, 49, 83);
+  background: linear-gradient(
+    90deg,
+    rgba(72, 49, 83, 1) 0%,
+    rgba(71, 66, 98, 1) 21%,
+    rgba(71, 66, 98, 1) 30%,
+    rgba(70, 85, 116, 1) 50%,
+    rgba(62, 110, 128, 1) 63%,
+    rgba(59, 141, 147, 1) 72%,
+    rgba(89, 197, 184, 1) 100%
+  );
+}
+
+/* Sub-header glow */
+.glowSubHeaders {
+  font-family: "Warnes", cursive;
+  font-weight: 200;
+  font-style: normal;
+  filter: drop-shadow(0px 0px 4px #ffffff);
+  transition: filter 0.5s ease;
+}
+/* the glow dissapears on hover  */
+.glowSubHeaders:hover {
+  filter: drop-shadow(0 0 10px #ffffff);
+}
+
+/* brand color */
+.higlight-shadow {
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fe5bcb, 0 0 20px #ff1177,
+    0 0 35px #9811ff, 0 0 40px #8811ff, 0 0 50px #6c11ff, 0 0 55px #8811ff;
+}
+/* brand glow and animation on hover */
+.neon:hover {
+  animation: neon1 1.5s ease-in-out infinite alternate;
+}
+@keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff1177,
+      0 0 40px #9411ff, 0 0 45px #7811ff, 0 0 50px #a411ff, 0 0 55px #ff1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff1177,
+      0 0 35px #9811ff, 0 0 40px #8811ff, 0 0 50px #6c11ff, 0 0 55px #8811ff;
+  }
+}
+
+/* menu button glow on mouseover */
+.glowButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+  transition: all 500ms ease;
+}
+
+.glowButton:hover {
+  box-shadow: 0 0 20px #0ebac5;
+}
+
+/* Icons glow */
+.glowIcon {
+  filter: drop-shadow(0px 0px 5px #fc0101);
+
+  transition: filter 0.5s ease;
+}
+/* the glow dissapears on hover  */
+.glowIcon:hover {
+  filter: drop-shadow(0 0 10px #fffefe);
+}

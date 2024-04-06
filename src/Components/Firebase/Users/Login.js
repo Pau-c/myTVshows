@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import { successPopupToast, errorPopupToast } from "../../PopUpMsg";
+import { popupToast } from "../../PopUpMsg";
 import NavBar from "../../Nav/NavBar";
 import { UserSchema } from "../../../Validation/inputValidation";
 import LoginComponent from "./LoginComponent";
+import { SUCCESS_COLOR } from "../../../constants/constants";
 
 export function Login() {
   const [user, setUser] = useState({
@@ -22,11 +23,11 @@ export function Login() {
       // Validate the user input
       await UserSchema.validate(user, { abortEarly: false });
       await login(user.email, user.password);
-      successPopupToast("Usuario autenticado");
+      popupToast("Usuario autenticado", `${SUCCESS_COLOR}`, "success");
       navigate("/");
     } catch (error) {
       console.log(error.message);
-      errorPopupToast("Error en usuario o pass");
+      popupToast("Error en usuario o pass", "error");
     }
   };
 
@@ -39,7 +40,7 @@ export function Login() {
       navigate("/");
     } catch (error) {
       console.log(error.message);
-      errorPopupToast("error.message");
+      popupToast("error.message", "error");
     }
   };
 
