@@ -3,7 +3,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import ListGroup from "react-bootstrap/ListGroup";
 import AtomButton from "../../Atoms/Button";
-import { Spinner } from "react-bootstrap";
+import LoadingSpinner from "../../Atoms/Spinner";
 
 export default function Content(props) {
   const placement = "left"; // tooltip placement
@@ -11,11 +11,7 @@ export default function Content(props) {
   let content;
   if (props.loading) {
     // Display spinner if loading is true
-    content = (
-      <Spinner animation="grow" role="status" className="spinner-color">
-        <span className="visually-hidden ">Esperar...</span>
-      </Spinner>
-    );
+    content = <LoadingSpinner />;
   } else if (props.favorites.length === 0) {
     content = <h2 className="m-4">No tenes shows favorite </h2>;
   } else {

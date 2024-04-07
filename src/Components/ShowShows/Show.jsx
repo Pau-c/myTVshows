@@ -12,7 +12,6 @@ import { addFavorite } from "./favorites/addFavorite";
 import { deleteFavorite } from "./favorites/deleteFavorite";
 import { popupMsg } from "../PopUpMsg";
 
-
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
 //gets show's info from clicking on a show in the grid of shows in home or from search results
@@ -21,7 +20,7 @@ const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 const Show = () => {
   const { user } = useAuth(); // Using the useAuth hook to get the current user
   const [showData, setShowData] = useState(null); // State variable for storing show data
-
+  const [loading, setLoading] = useState(true);
   const [isFavorite, setIsFavorite] = useState(false); // State variable for tracking favorite status
 
   // Function to fetch show data
@@ -29,7 +28,7 @@ const Show = () => {
     const data1 = await fetchShowData(
       `${URL}${showId}?api_key=${API_KEY}${LANGUAGE}&append_to_response=aggregate_credits`
     );
-  
+
     const {
       genres,
       name,
@@ -51,10 +50,10 @@ const Show = () => {
       overview,
       poster_path,
       seasons,
-      status
+      status,
     });
+    setLoading(false);
   };
-  
 
   // Fetch show data when the component mounts
   useEffect(() => {
@@ -98,30 +97,43 @@ const Show = () => {
 
   // Render genre elements based on show data
   let genreElements = null;
-  console.log(showData, "edited object")
+  console.log(showData, "edited object");
   if (showData && showData.genres) {
     genreElements = showData.genres.map((genre) => (
       <span key={genre.id}> |{genre.name}| </span>
     ));
   }
 
-  // Render the top 10 cast by number of eps involved  
+  // Render the top 10 cast by number of eps involved
   let castElements = null;
 
-  if (showData && showData.aggregate_credits && showData.aggregate_credits.cast) {
+  if (
+    showData &&
+    showData.aggregate_credits &&
+    showData.aggregate_credits.cast
+  ) {
     const castArray = showData.aggregate_credits.cast;
-    const first10Cast = [];
-    
-    for (let i = 0; i < 11; i++) {
-      first10Cast.push(castArray[i]);
-    }
-  console.log(first10Cast, "cast");
-  castElements = first10Cast.map((actor) => (
-    <span key={actor.id}>
-      | {actor.name} ({actor.total_episode_count}) 
-    </span>
-  ));
-  }  
+    const topTenCast = [];
+
+    castArray.forEach((element, index) => {
+      if (index < 11) {
+        topTenCast.push(element);
+      }
+    });
+
+    console.log(topTenCast, "cast");
+
+    castElements = topTenCast.map((actor) => (
+      <>
+        <li key={actor.id}>
+          <span>
+            {actor.name}: {actor.roles[0].character}
+            <span className="small">({actor.total_episode_count}) </span>
+          </span>
+        </li>
+      </>
+    ));
+  }
 
   // Render seasons elements based on show data
   let seasonsElements = null;
@@ -145,11 +157,13 @@ const Show = () => {
     <ShowCard
       status={status}
       seasonsElements={seasonsElements}
-      showData={showData}
       genreElements={genreElements}
       castElements={castElements}
       isFavorite={isFavorite}
       handleFavoriteToggle={handleFavoriteToggle}
+      loading={loading}
+      // api data
+      showData={showData}
     />
   );
 };

@@ -15,16 +15,6 @@ a {
 a:hover {
   color: black;
 }
-#posterizarButtonSmall {
-  background-color: #ef7796 !important;
-  font-weight: bold;
-
-  border: none !important;
-}
-#posterizarButton {
-  background-color: #474262;
-  border: none !important;
-}
 /* navbar brand text */
 .navbar-text {
   font-family: "Warnes", cursive;
@@ -63,51 +53,6 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-/* meme component */
-.meme {
-  position: relative;
-  margin-top: 3em;
-  align-self: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.meme-text {
-  position: relative;
-  width: 40%; /* of the text line before it breaks */
-  text-align: left;
-  left: 30%; /* start of the meme text */
-  top: 98em; /* text height  */
-  margin: 2px 2px 2px 2px;
-  padding: 2px 2px;
-  font-family: impact, sans-serif;
-  font-size: 2em;
-  text-transform: uppercase;
-  color: white;
-  letter-spacing: 1px;
-  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
-    -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
-    2px 2px 5px #000;
-}
-
-.meme-text-retro {
-  position: relative;
-  width: 40%; /* of the text line before it breaks */
-  text-align: left;
-  left: 30%; /* start of the meme text */
-  top: 98em; /* text height  */
-  margin: 2px 2px 2px 2px;
-  padding: 2px 2px;
-  font-family: "Lucida Handwriting";
-  font-size: 2em;
-  text-transform: lowercase;
-  color: white;
-  letter-spacing: 1px;
-  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
-    -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
-    2px 2px 5px #000;
 }
 
 .bottom {
