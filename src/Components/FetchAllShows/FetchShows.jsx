@@ -7,6 +7,8 @@ import {
   URL_DISCOVER,
 } from "../../constants/constants";
 
+
+//gets popular shows
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
 const ShowSeries = () => {

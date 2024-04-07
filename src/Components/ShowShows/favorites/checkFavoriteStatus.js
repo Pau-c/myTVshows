@@ -1,11 +1,11 @@
 import { getDocs, getFirestore } from "firebase/firestore";
 import { favoriteQuery } from "./getFavorites";
 
-export const checkFavoriteStatus = async (user, showName) => {
+export const checkFavoriteStatus = async (user, id) => {
   if (user) {
     try {
       const db = getFirestore();
-      const querySnapshot = await getDocs(favoriteQuery(db, user, showName));
+      const querySnapshot = await getDocs(favoriteQuery(db, user, id));
 
       return !querySnapshot.empty;
     } catch (e) {

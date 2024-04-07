@@ -39,6 +39,7 @@ const Show = () => {
       seasons,
       status,
       aggregate_credits,
+      id,
     } = data1;
 
     setShowData({
@@ -51,6 +52,7 @@ const Show = () => {
       poster_path,
       seasons,
       status,
+      id,
     });
     setLoading(false);
   };
@@ -71,7 +73,7 @@ const Show = () => {
 
   // Function to check favorite status
   const checkFavorite = async () => {
-    const favoriteExists = await checkFavoriteStatus(user, showData.name);
+    const favoriteExists = await checkFavoriteStatus(user, showData.id);
     setIsFavorite(favoriteExists);
   };
 
@@ -79,10 +81,10 @@ const Show = () => {
   const handleFavoriteToggle = async () => {
     if (user) {
       if (isFavorite) {
-        await deleteFavorite(user, showData.name);
+        await deleteFavorite(user, showData.name,  showData.id);
         setIsFavorite(false);
       } else {
-        await addFavorite(user, showData.name);
+        await addFavorite(user, showData.name, showData.id);
         setIsFavorite(true);
       }
     } else {
@@ -121,7 +123,7 @@ const Show = () => {
       }
     });
 
-    console.log(topTenCast, "cast");
+    
 
     castElements = topTenCast.map((actor) => (
       <>

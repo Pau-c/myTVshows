@@ -7,10 +7,13 @@ function AtomAccordionCollapsed(props) {
         WebkitBoxShadow: 'none',
       }}>
       <Accordion.Item eventKey="0">
-        <Accordion.Header>{props.title}</Accordion.Header>
+        <Accordion.Header>
+        <span className="fw-bold m-4 mb-0 fs-5">
+          {props.title} </span>
+          </Accordion.Header>
         <Accordion.Body>
-
-            {props.text}
+        <span className=" m-4 mb-0 fs-5">
+            {props.text}</span>
             </Accordion.Body>
       </Accordion.Item>
     </Accordion>

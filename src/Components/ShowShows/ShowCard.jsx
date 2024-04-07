@@ -19,18 +19,13 @@ const ShowCard = (props) => {
   const accordionCollapsed = [
     <AtomAccordionCollapsed
       key="cast"
-     
-      title={
-        <span className="fw-bold m-4 mb-0 fs-5">
-          Top 10 Elenco- por cantidad de capitulos:
-        </span>
-      } 
+      title={"Top 10 Elenco- por cantidad de capitulos:" } 
       text={castElements}
     />,
     <AtomAccordionCollapsed
       key="seasons"
-      text={seasonsElements}
-      title={<span className="fw-bold m-4 mb-0 fs-5">Temporadas</span>}
+    title={"Temporadas"}
+          text={seasonsElements}
     />,
   ];
 
@@ -44,6 +39,7 @@ const ShowCard = (props) => {
       genreElements={genreElements}
       castElements={castElements}
       seasonsElements={seasonsElements}
+      
       accordionCollapsed={accordionCollapsed}
     />
   );

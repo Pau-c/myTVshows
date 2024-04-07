@@ -1,10 +1,12 @@
 import { AiOutlineDelete } from "react-icons/ai";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import ListGroup from "react-bootstrap/ListGroup";
+
 import AtomButton from "../../Atoms/Button";
 import LoadingSpinner from "../../Atoms/Spinner";
+import { Link } from "react-router-dom";
 
+//shows all favorites
 export default function Content(props) {
   const placement = "left"; // tooltip placement
 
@@ -13,15 +15,16 @@ export default function Content(props) {
     // Display spinner if loading is true
     content = <LoadingSpinner />;
   } else if (props.favorites.length === 0) {
-    content = <h2 className="m-4">No tenes shows favorite </h2>;
+    content = <h2 className="m-4">No tenes shows favoritos </h2>;
   } else {
     content = (
       <>
-        <h2 className="m-4 glowSubHeaders">Shows FavoRitos </h2>
+        <h2 className="m-4 glowSubHeaders">Shows FavoRitos</h2>
         <div className="">
-          <ListGroup as="ul" unnumbered>
+          <ul className="list-unstyled">
+           
             {props.favorites.map((el) => (
-              <ListGroup.Item as="li" key={el.id} className="p-3">
+              <li key={el.id} className="p-3"> 
                 <OverlayTrigger
                   placement={placement}
                   overlay={
@@ -31,16 +34,17 @@ export default function Content(props) {
                   }
                 >
                   <AtomButton
-                    // You can adjust this linkTo prop as needed
+                 
                     onClick={() => props.handleDeleteFavorite(el.id)}
                     buttonText={<AiOutlineDelete />}
                   />
                 </OverlayTrigger>
-
-                <span className="m-3 fw-light text-dark fs-3">{el.name}</span>
-              </ListGroup.Item>
+                <Link to={`/show/${el.Id}`}>
+               <mark className="rounded opacity-50">  <span className="m-3  text-dark  fs-3">{el.name}</span></mark>
+              </Link>
+              </li>
             ))}
-          </ListGroup>
+          </ul>
         </div>
       </>
     );
