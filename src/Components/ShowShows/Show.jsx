@@ -12,7 +12,6 @@ import { addFavorite } from "./favorites/addFavorite";
 import { deleteFavorite } from "./favorites/deleteFavorite";
 import { popupMsg } from "../PopUpMsg";
 
-
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
 //gets show's info from clicking on a show in the grid of shows in home or from search results
@@ -21,15 +20,41 @@ const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 const Show = () => {
   const { user } = useAuth(); // Using the useAuth hook to get the current user
   const [showData, setShowData] = useState(null); // State variable for storing show data
-
+  const [loading, setLoading] = useState(true);
   const [isFavorite, setIsFavorite] = useState(false); // State variable for tracking favorite status
 
   // Function to fetch show data
   const fetchShow = async (showId) => {
-    const data = await fetchShowData(
-      `${URL}${showId}?api_key=${API_KEY}${LANGUAGE}`
+    const data1 = await fetchShowData(
+      `${URL}${showId}?api_key=${API_KEY}${LANGUAGE}&append_to_response=aggregate_credits`
     );
-    setShowData(data);
+
+    const {
+      genres,
+      name,
+      number_of_episodes,
+      number_of_seasons,
+      overview,
+      poster_path,
+      seasons,
+      status,
+      aggregate_credits,
+      id,
+    } = data1;
+
+    setShowData({
+      genres,
+      name,
+      number_of_episodes,
+      number_of_seasons,
+      aggregate_credits,
+      overview,
+      poster_path,
+      seasons,
+      status,
+      id,
+    });
+    setLoading(false);
   };
 
   // Fetch show data when the component mounts
@@ -48,7 +73,7 @@ const Show = () => {
 
   // Function to check favorite status
   const checkFavorite = async () => {
-    const favoriteExists = await checkFavoriteStatus(user, showData.name);
+    const favoriteExists = await checkFavoriteStatus(user, showData.id);
     setIsFavorite(favoriteExists);
   };
 
@@ -56,10 +81,10 @@ const Show = () => {
   const handleFavoriteToggle = async () => {
     if (user) {
       if (isFavorite) {
-        await deleteFavorite(user, showData.name);
+        await deleteFavorite(user, showData.name, showData.id);
         setIsFavorite(false);
       } else {
-        await addFavorite(user, showData.name);
+        await addFavorite(user, showData.name, showData.id);
         setIsFavorite(true);
       }
     } else {
@@ -74,10 +99,39 @@ const Show = () => {
 
   // Render genre elements based on show data
   let genreElements = null;
-  //console.log(showData)
+  //console.log(showData, "edited object");
   if (showData && showData.genres) {
-    genreElements = showData.genres.map((genre) => (
-      <span key={genre.id}> |{genre.name}| </span>
+    genreElements = showData.genres.map((genre, index) => (
+      <span key={`genre-${index}`}> |{genre.name}| </span>
+    ));
+  }
+
+  // Render the top 10 cast by number of eps involved
+  let castElements = null;
+
+  if (
+    showData &&
+    showData.aggregate_credits &&
+    showData.aggregate_credits.cast
+  ) {
+    const castArray = showData.aggregate_credits.cast;
+    const topTenCast = [];
+
+    castArray.forEach((element, index) => {
+      if (index < 11) {
+        topTenCast.push(element);
+      }
+    });
+
+    castElements = topTenCast.map((actor, index) => (
+      <>
+        <li key={`actor-${index}`}>
+          <span>
+            {actor.name}: {actor.roles[0].character}
+            <span className="small">({actor.total_episode_count}) </span>
+          </span>
+        </li>
+      </>
     ));
   }
 
@@ -85,7 +139,7 @@ const Show = () => {
   let seasonsElements = null;
   if (showData && showData.seasons) {
     seasonsElements = showData.seasons.map((element, index) => (
-      <div key={element.id}>
+      <div key={`season-${index}`}>
         <span style={{ fontWeight: "bold" }}>Temporada {index + 1}: </span>
         <span>{element.episode_count} episodios |</span>
         <span style={{ fontWeight: 600 }}>Rating: </span>
@@ -103,10 +157,13 @@ const Show = () => {
     <ShowCard
       status={status}
       seasonsElements={seasonsElements}
-      showData={showData}
       genreElements={genreElements}
+      castElements={castElements}
       isFavorite={isFavorite}
       handleFavoriteToggle={handleFavoriteToggle}
+      loading={loading}
+      // api data
+      showData={showData}
     />
   );
 };

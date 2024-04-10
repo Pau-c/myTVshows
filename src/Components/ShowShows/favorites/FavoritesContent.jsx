@@ -1,51 +1,61 @@
 import { AiOutlineDelete } from "react-icons/ai";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import ListGroup from "react-bootstrap/ListGroup";
 import AtomButton from "../../Atoms/Button";
-import { Spinner } from "react-bootstrap";
+import LoadingSpinner from "../../Atoms/Spinner";
+import { Link } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
 
 export default function Content(props) {
-  const placement = "left"; // tooltip placement
+  const placement = "right"; // Tooltip placement
 
   let content;
   if (props.loading) {
     // Display spinner if loading is true
-    content = (
-      <Spinner animation="grow" role="status" className="spinner-color">
-        <span className="visually-hidden ">Esperar...</span>
-      </Spinner>
-    );
+    content = <LoadingSpinner />;
   } else if (props.favorites.length === 0) {
-    content = <h2 className="m-4">No tenes shows favorite </h2>;
+    content = <h2 className="m-4">No tenes shows favoritos </h2>;
   } else {
     content = (
       <>
-        <h2 className="m-4 glowSubHeaders">Shows FavoRitos </h2>
-        <div className="">
-          <ListGroup as="ul" unnumbered>
-            {props.favorites.map((el) => (
-              <ListGroup.Item as="li" key={el.id} className="p-3">
-                <OverlayTrigger
-                  placement={placement}
-                  overlay={
-                    <Tooltip id={`tooltip-${placement}`}>
-                      <strong>Borrar</strong>
-                    </Tooltip>
-                  }
-                >
-                  <AtomButton
-                    // You can adjust this linkTo prop as needed
-                    onClick={() => props.handleDeleteFavorite(el.id)}
-                    buttonText={<AiOutlineDelete />}
-                  />
-                </OverlayTrigger>
+        <h2 className="m-4 glowSubHeaders">Series FavoRitas</h2>
 
-                <span className="m-3 fw-light text-dark fs-3">{el.name}</span>
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
-        </div>
+        <ul className="list-unstyled">
+          {props.favorites.map((el) => (
+            <li key={el.id} className="p-3">
+              <Row className="align-items-center">
+                {/* Icon column */}
+                <Col xs={12} lg={1}>
+                  <OverlayTrigger
+                    placement={placement}
+                    overlay={
+                      <Tooltip id={`tooltip-${placement}`}>
+                        <strong>Borrar</strong>
+                      </Tooltip>
+                    }
+                  >
+                    <AtomButton
+                      onClick={() => props.handleDeleteFavorite(el.id)}
+                      buttonText={<AiOutlineDelete />}
+                    />
+                  </OverlayTrigger>
+                </Col>
+                {/* Name column */}
+                <Col xs={12} lg={11}>
+                  <Row>
+                    <Col>
+                      <Link to={`/show/${el.Id}`}>
+                        <mark className="rounded">
+                          <span className="m-3 text-light fs-3">{el.name}</span>
+                        </mark>
+                      </Link>
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+            </li>
+          ))}
+        </ul>
       </>
     );
   }

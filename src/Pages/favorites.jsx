@@ -8,6 +8,8 @@ import Content from "../Components/ShowShows/favorites/FavoritesContent";
 import { COLLECTION_favorites } from "../constants/constants";
 import { popupMsg } from "../Components/PopUpMsg";
 
+
+//for favorites page
 const FavoritesList = () => {
   const { user } = useAuth(); // Brings user from context
   const [favorites, setFavorites] = useState([]);
@@ -57,7 +59,7 @@ const FavoritesList = () => {
   return (
     <>
       <NavBar />
-      <Container className="w-25 p-3 mt-3 w-auto">
+      <Container className="w-100 h-100 p-3 mt-3 ">
         <Content
           favorites={favorites}
           handleDeleteFavorite={handleDeleteFavorite}

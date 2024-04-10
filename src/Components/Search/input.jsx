@@ -7,7 +7,7 @@ import "../../App.css";
 export default function InputSearch(props) {
   return (
     <>
-      <InputGroup className="mb-3">
+      <InputGroup className="mb-3 w-50 mx-auto m-5">
         <Button onClick={props.handleSearch} id="button-input-search">
           Buscar
         </Button>
@@ -15,8 +15,7 @@ export default function InputSearch(props) {
           value={props.searchInput}
           onChange={props.searcher}
           type="text"
-          placeholder="Buscar"
-          className=" w-25 "
+          placeholder="..."
           aria-label="Example text with button addon"
           aria-describedby="basic-addon1"
         />
