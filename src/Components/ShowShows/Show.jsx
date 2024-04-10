@@ -81,7 +81,7 @@ const Show = () => {
   const handleFavoriteToggle = async () => {
     if (user) {
       if (isFavorite) {
-        await deleteFavorite(user, showData.name,  showData.id);
+        await deleteFavorite(user, showData.name, showData.id);
         setIsFavorite(false);
       } else {
         await addFavorite(user, showData.name, showData.id);
@@ -99,10 +99,10 @@ const Show = () => {
 
   // Render genre elements based on show data
   let genreElements = null;
-  console.log(showData, "edited object");
+  //console.log(showData, "edited object");
   if (showData && showData.genres) {
-    genreElements = showData.genres.map((genre) => (
-      <span key={genre.id}> |{genre.name}| </span>
+    genreElements = showData.genres.map((genre, index) => (
+      <span key={`genre-${index}`}> |{genre.name}| </span>
     ));
   }
 
@@ -123,11 +123,9 @@ const Show = () => {
       }
     });
 
-    
-
-    castElements = topTenCast.map((actor) => (
+    castElements = topTenCast.map((actor, index) => (
       <>
-        <li key={actor.id}>
+        <li key={`actor-${index}`}>
           <span>
             {actor.name}: {actor.roles[0].character}
             <span className="small">({actor.total_episode_count}) </span>
@@ -141,7 +139,7 @@ const Show = () => {
   let seasonsElements = null;
   if (showData && showData.seasons) {
     seasonsElements = showData.seasons.map((element, index) => (
-      <div key={element.id}>
+      <div key={`season-${index}`}>
         <span style={{ fontWeight: "bold" }}>Temporada {index + 1}: </span>
         <span>{element.episode_count} episodios |</span>
         <span style={{ fontWeight: 600 }}>Rating: </span>

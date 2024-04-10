@@ -7,6 +7,7 @@ import { URL_IMAGE } from "../../constants/constants"
 export default function FetchShowGrid(props) {
   return (
     <Container>
+      <h1 className="m-4 glowSubHeaders mt-5">Series Populares</h1>
       <div className="row">
         {props.showData.map((show, index) => (
           <div className="col-md-4 p-1 d-flex align-items-stretch my-2" key={index}>
@@ -23,7 +24,7 @@ export default function FetchShowGrid(props) {
                       variant="flush"
                       className="list-group list-group-flush"
                     >
-                      <ListGroup.Item className="fs-2">
+                      <ListGroup.Item className="fs-3">
                         <Link to={`/show/${show.id}`}>{show.name}</Link>
                       </ListGroup.Item>
                       <ListGroup.Item>
