@@ -18,11 +18,12 @@ Keep track of what you're watching
   
  </div>
  
-TV Series app utilizing the TMDB API. Features include:
+React app using the TMDB REST API with MVC architecture and Firebase DB.
+Features include:
 
 - Displaying the most popular series in a grid format.
 - Searching for shows by name, returning basic information.
-- Allowing users to create usernames and maintain a list of favorite shows.
+- Allowing users to create usernames and maintain a list of their favorite shows.
 
 ---
 
