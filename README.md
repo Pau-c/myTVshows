@@ -1,4 +1,4 @@
-# myTVshows <img src="https://raw.githubusercontent.com/Pau-c/myTVshows/5ef50e4b52782cb2f430ca30220c1109809c0f23/public/Television-comic.svg" alt="react" widht="70" height="70" />
+# myTVshows <img src="https://raw.githubusercontent.com/Pau-c/myTVshows/5ef50e4b52782cb2f430ca30220c1109809c0f23/public/Television-comic.svg" alt="react" width="70" height="70" />
 
 Keep track of what you're watching
 
